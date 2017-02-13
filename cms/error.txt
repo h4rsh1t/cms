@@ -1,0 +1,1 @@
+Warning: mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in C:\xampp\htdocs\majorFinal\login.php on line 10
