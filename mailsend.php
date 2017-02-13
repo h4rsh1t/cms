@@ -12,7 +12,7 @@ if(isset($_SESSION['coe'])){
 }
 $m = "mail_".$_POST["to"];
 
-    $sql="INSERT INTO $m VALUES('$from','inbox','".$_POST["subject"]."','".$_POST['body']."',NULL)";
+    $sql="INSERT INTO $m VALUES(NULL,'$from','inbox','".$_POST["subject"]."','".$_POST['body']."',NULL)";
 echo("$sql");
 
     mysqli_query($conn,$sql);

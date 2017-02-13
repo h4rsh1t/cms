@@ -31,6 +31,9 @@ session_start();
 <div class="tab-content">
     <div id="mailbox" class="tab-pane fade in active">
 			<button type="button" data-toggle="modal" class="btn btn-danger" href="#composeModal">Compose</button>
+            <form method="POST" action="inbox.php">
+            <button type="submit" class="btn btn-default" name="viewInbox">Inbox</button>
+            </form>
         <!--<div class="row">
             <div class="col-md-2" style="text-align: center">
 
