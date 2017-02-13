@@ -1,3 +1,15 @@
+<html>
+<head>
+    <title>
+        Welcome
+    </title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
 <?php
 include "connect.php";
 
@@ -14,8 +26,8 @@ echo "<table width='95%'>
 if(mysqli_num_rows($sql) > 0){
 
 	while($r = mysqli_fetch_assoc($sql)) {
-		
-		echo "<tr><td>".$r['rec_id']."</td><td><a href='view.php/?id=".$r['id']."'>".$r['subject']."</a></td></tr>"; 
+
+		echo "<tr><td>".$r['rec_id']."</td><td><a href='view.php/?id=".$r['id']."'>".$r['subject']."</a></td></tr>";
 
 
 	}
@@ -23,8 +35,10 @@ if(mysqli_num_rows($sql) > 0){
 else{
 
 	die("0 result");
-}	
+}
 
 echo "</table>";
 
 ?>
+</body>
+</html>
