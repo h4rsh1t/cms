@@ -1,6 +1,6 @@
 <?php
 
-    $conn = mysqli_connect('localhost','root','hj49','cms');
+    $conn = mysqli_connect('localhost','root','','cms');
     if($conn){
        
     }

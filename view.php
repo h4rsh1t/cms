@@ -22,15 +22,14 @@ if(!isset($id)) {
    header('location: inbox.php');
 }
 elseif(isset($id)) {
-  $m = "mail_".$_SESSION["student"];
-
+  
   $grab_pm = mysqli_query($conn,"SELECT * FROM mail_all WHERE sr_no = '".$id."'");
 
   if(mysqli_num_rows($grab_pm) > 0){
 
 	   while($r= mysqli_fetch_assoc($grab_pm)) {
-          //$_SESSION['rec'] = $r['reciever'];
-          //$_SESSION['subj'] = $r['subject'];
+          $_SESSION['rec'] = $r['sender'];
+          $_SESSION['subj'] = $r['subject'];
   		   echo "<p>From: ".$r['sender']."</p>";
    		    echo "<p>Subject : ".$r['subject']."</p>";
    		     echo "<p>Message : ".$r['content']."</p>";
@@ -38,20 +37,32 @@ elseif(isset($id)) {
    }
 }
 
-/*if(isset($_POST['reply'])){
+if(isset($_POST['reply'])){
 
-  $to = "mail_".$_SESSION['rec'];
+  
   $sub = "RE: ".$_SESSION['subj'];
   $msg = $_POST['replyMessage'];
-  $reply = "INSERT INTO $to VALUES(NULL,'".$_SESSION['student']."','inbox','$sub','$msg',NULL)";
+  $reply = "INSERT INTO mail_all VALUES('".$_SESSION['student']."','".$_SESSION['rec']."','".$sub."','inbox','".$msg."',NULL,NULL)";
   if(mysqli_query($conn,$reply)){
-    die('Success');
+    header('Location: /cms/inbox.php');
   }
   else{
     die("not Sent");
   }
+}
 
-}*/
+if(isset($_POST['delete'])){
+
+  $delete = "DELETE FROM mail_all WHERE sr_no = $id";
+  if(mysqli_query($conn,$delete)){
+    header('Location: /cms/inbox.php');
+  }else{
+    die("DAMM");
+  }
+  
+}  
+
+
 
 ?>
 <form method="POST" action="">
