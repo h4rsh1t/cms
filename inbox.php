@@ -15,20 +15,21 @@ include "connect.php";
 
 session_start();
 
-$m = "mail_".$_SESSION["student"];
+//$m = "mail_".$_SESSION["student"];
 
 
-$sql = mysqli_query($conn,"SELECT * FROM $m WHERE type='inbox'");
+$sql = mysqli_query($conn,"SELECT * FROM mail_all WHERE reciever = '".$_SESSION['student']."'");
 
 echo "<table width='95%'>
-<tr><th>From</th><th>Subject</th></tr>";
+<tr><th>#</th><th>From</th><th>Subject</th></tr>";
 
 if(mysqli_num_rows($sql) > 0){
+    $i=1;
 
 	while($r = mysqli_fetch_assoc($sql)) {
 
-		echo "<tr><td>".$r['rec_id']."</td><td><a href='view.php/?id=".$r['id']."'>".$r['subject']."</a></td></tr>";
-
+		echo "<tr><td>".$i."</td><td>".$r['sender']."</td><td><a href='view.php/?id=".$r['sr_no']."'>".$r['subject']."</a></td></tr>";
+        $i++;
 
 	}
 }

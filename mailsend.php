@@ -10,9 +10,9 @@ if(isset($_SESSION['faculty'])){
 if(isset($_SESSION['coe'])){
 	$from = $_SESSION['coe'];
 }
-$m = "mail_".$_POST["to"];
+//$m = "mail_".$_POST["to"];
 
-    $sql="INSERT INTO $m VALUES(NULL,'$from','inbox','".$_POST["subject"]."','".$_POST['body']."',NULL)";
+    $sql="INSERT INTO mail_all VALUES('$from','".$_POST['to']."','".$_POST["subject"]."','inbox','".$_POST['body']."',NULL,NULL)";
 echo("$sql");
 
     mysqli_query($conn,$sql);

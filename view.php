@@ -15,6 +15,8 @@ include 'connect.php';
 session_start();
 
 $id = @$_GET['id'];
+/*echo($_GET['id']);
+die(".");*/
 
 if(!isset($id)) {
    header('location: inbox.php');
@@ -22,14 +24,14 @@ if(!isset($id)) {
 elseif(isset($id)) {
   $m = "mail_".$_SESSION["student"];
 
-  $grab_pm = mysqli_query($conn,"SELECT * FROM $m WHERE id = '$id'");
+  $grab_pm = mysqli_query($conn,"SELECT * FROM mail_all WHERE sr_no = '".$id."'");
 
   if(mysqli_num_rows($grab_pm) > 0){
 
 	   while($r= mysqli_fetch_assoc($grab_pm)) {
-          $_SESSION['rec'] = $r['rec_id'];
-          $_SESSION['subj'] = $r['subject'];
-  		   echo "<p>From: ".$r['rec_id']."</p>";
+          //$_SESSION['rec'] = $r['reciever'];
+          //$_SESSION['subj'] = $r['subject'];
+  		   echo "<p>From: ".$r['sender']."</p>";
    		    echo "<p>Subject : ".$r['subject']."</p>";
    		     echo "<p>Message : ".$r['content']."</p>";
    	 }
