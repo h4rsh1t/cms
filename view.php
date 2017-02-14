@@ -44,7 +44,7 @@ if(isset($_POST['reply'])){
   $msg = $_POST['replyMessage'];
   $reply = "INSERT INTO mail_all VALUES('".$_SESSION['student']."','".$_SESSION['rec']."','".$sub."','inbox','".$msg."',NULL,NULL)";
   if(mysqli_query($conn,$reply)){
-    header('Location: /cms/inbox.php');
+    header('Location:../inbox.php');
   }
   else{
     die("not Sent");
@@ -55,7 +55,7 @@ if(isset($_POST['delete'])){
 
   $delete = "DELETE FROM mail_all WHERE sr_no = $id";
   if(mysqli_query($conn,$delete)){
-    header('Location: /cms/inbox.php');
+    header('Location:../inbox.php');
   }else{
     die("DAMM");
   }
