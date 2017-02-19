@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="login.html">Home</a>
+          <a class="navbar-brand" href="index.php">Home</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 
