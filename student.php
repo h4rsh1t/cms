@@ -11,7 +11,7 @@ session_start();
 	}
 
     $info_user = json_decode($_SESSION["info_user"]);
-	
+
 ?>
 <html>
 <head>
@@ -26,7 +26,7 @@ session_start();
 /*print_r($info_user);
 die(".");*/
 echo "<h4>Name: ".$info_user->name."</h4>";
-echo "<h4>Fname: ".$info_user->fname."</h4>";
+echo "<h4>Class: ".$info_user->fname."</h4>";
 echo "<h4>Phone no. ".$info_user->phone."</h4>";
 ?>
 

@@ -1,3 +1,12 @@
+<?php
+include "connect.php";
+$s = mysqli_query($conn,"SELECT * from login where memberType='student'");
+$f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
+$faculty = mysqli_num_rows($f);
+$student = mysqli_num_rows($s);
+
+?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,13 +19,6 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-<?php
-include "../connect.php";
-$sql = "SELECT count(*) from login";
-$info = mysqli_query($conn,$sql);
-$res = mysqli_fetch_assoc($info);
-$count = $res['count(*)'];
-?>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -81,8 +83,14 @@ $count = $res['count(*)'];
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span><?php echo $count; ?></h2>
-                    <h4>Users</h4>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span><?php echo $student; ?></h2>
+                    <h4>Student</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $faculty;?></h2>
+                    <h4>Faculty</h4>
                   </div>
                 </div>
                 </div>
@@ -116,7 +124,39 @@ $count = $res['count(*)'];
 
     <!-- Add User -->
     <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Faculty</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" action="register.php" method="post">
+              <div class="form-group">
+                  <label for="fullName"><span class="glyphicon glyphicon-user"></span> Name</label>
+                  <input type="text" class="form-control" name="fullName" placeholder="Enter Full Name" required>
+              </div>
+              <div class="form-group">
+                  <label for="username"><span class="glyphicon glyphicon-user"></span> Username</label>
+                  <input type="text" class="form-control" name="username" placeholder="Enter College Id" required>
+              </div>
+              <div class="form-group">
+                  <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                  <input type="password" class="form-control" name="psw" placeholder="Enter password" required>
+              </div>
+              <div class="form-group">
+                  <label for="Rpsw"><span class="glyphicon glyphicon-eye-open"></span> Retype Password</label>
+                  <input type="password" class="form-control" name="Rpsw" placeholder="Re-enter password" required>
+              </div>
 
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
     </div>
 
   <script>
