@@ -17,6 +17,11 @@ if(mysqli_num_rows($result) > 0){
 
     $row = mysqli_fetch_assoc($result);
 	
+$sql = "SELECT * from user_info WHERE username = '$email'";
+$info = mysqli_query($conn,$sql);
+$res = mysqli_fetch_assoc($info);
+
+$_SESSION["info_user"] = json_encode($res);
 
     if($row["memberType"] == 'student'){
     $_SESSION["student"] = $email;

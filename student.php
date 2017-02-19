@@ -9,6 +9,8 @@ session_start();
 		session_destroy();
 		header('location:index.php');
 	}
+
+    $info_user = json_decode($_SESSION["info_user"]);
 	
 ?>
 <html>
@@ -20,6 +22,14 @@ session_start();
 
 </head>
 <body style="background-color: #eeeeee ; padding-left: 150px;padding-top: 150px">
+<?php
+/*print_r($info_user);
+die(".");*/
+echo "<h4>Name: ".$info_user->name."</h4>";
+echo "<h4>Fname: ".$info_user->fname."</h4>";
+echo "<h4>Phone no. ".$info_user->phone."</h4>";
+?>
+
 <form method="post" >
 	<button type="submit" class="btn btn-default" name="logout" method="post">Logout</button>
 </form>
