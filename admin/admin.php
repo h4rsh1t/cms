@@ -10,7 +10,13 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-
+<?php
+include "../connect.php";
+$sql = "SELECT count(*) from login";
+$info = mysqli_query($conn,$sql);
+$res = mysqli_fetch_assoc($info);
+$count = $res['count(*)'];
+?>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -75,7 +81,7 @@
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Yaha par php script ka output ana hai</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span><?php echo $count; ?></h2>
                     <h4>Users</h4>
                   </div>
                 </div>
