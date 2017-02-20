@@ -23,8 +23,11 @@ $res = mysqli_fetch_assoc($info);
 $name = $res['name'];
 $sql = "insert into login_log values('$email','$name',NULL)";
 $info = mysqli_query($conn,$sql);
-
+$sql = "UPDATE `user_info` set `active`= 1 WHERE username = $email";
+$info = mysqli_query($conn,$sql);
 $_SESSION["info_user"] = json_encode($res);
+
+
 
     if($row["memberType"] == 'student'){
     $_SESSION["student"] = $email;

@@ -21,6 +21,9 @@ $student = mysqli_num_rows($s);
 <?php
 $sql = "SELECT username,name,max(time) from login_log GROUP by username order by time desc";
 $info1 = mysqli_query($conn,$sql);
+$sql = "select count(*) from user_info where active= 1";
+$info2 = mysqli_query($conn,$sql);
+$active_users = mysqli_num_rows($info2);
 
 ?>
     <nav class="navbar navbar-default">
@@ -95,6 +98,12 @@ $info1 = mysqli_query($conn,$sql);
                   <div class="well dash-box">
                     <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $faculty;?></h2>
                     <h4>Faculty</h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="well dash-box">
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $active_users;?></h2>
+                    <h4>active users</h4>
                   </div>
                 </div>
                 </div>
