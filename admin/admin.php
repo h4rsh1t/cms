@@ -4,6 +4,15 @@ $s = mysqli_query($conn,"SELECT * from login where memberType='student'");
 $f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
 $faculty = mysqli_num_rows($f);
 $student = mysqli_num_rows($s);
+$picQ = "SELECT pic from user_info where username='13csu120'";
+$result = mysqli_query($conn,$picQ);
+if(mysqli_num_rows($result) > 0){
+
+    $pic = mysqli_fetch_assoc($result);
+    $profile = "../profilepics/".$pic["pic"];
+}
+
+
 ?>
 
 <html lang="en">
@@ -82,6 +91,13 @@ $active_users = mysqli_num_rows($info2);
       <div class="container">
         <div class="row">
           <div class="col-md-3">
+            <div class="well">
+              <?php echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+              <form role="form" action="" method="post" enctype="multipart/form-data">
+                <input id="avatar" name="avatar" type="file" class="file-loading">
+                <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
+              </form>
+            </div>
             <div class="list-group">
               <a href="index.html" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
