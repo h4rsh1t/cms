@@ -19,12 +19,7 @@ $student = mysqli_num_rows($s);
   </head>
   <body>
 <?php
-include "../connect.php";
-$sql = "SELECT count(*) from login";
-$info = mysqli_query($conn,$sql);
-$res = mysqli_fetch_assoc($info);
-$count = $res['count(*)'];
-$sql = "SELECT * from login_log where 1";
+$sql = "SELECT * from login_log group by username";
 $info1 = mysqli_query($conn,$sql);
 
 ?>
