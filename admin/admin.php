@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../connect.php";
 $s = mysqli_query($conn,"SELECT * from login where memberType='student'");
 $f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
 $faculty = mysqli_num_rows($f);
@@ -19,6 +19,18 @@ $student = mysqli_num_rows($s);
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
+<?php
+include "../connect.php";
+$sql = "SELECT count(*) from login";
+$info = mysqli_query($conn,$sql);
+$res = mysqli_fetch_assoc($info);
+$count = $res['count(*)'];
+$sql = "SELECT * from login_log";
+$info = mysqli_query($conn,$sql);
+$res = mysqli_fetch_assoc($info);
+/*print_r($res);
+                      die(".");*/
+?>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -108,6 +120,19 @@ $student = mysqli_num_rows($s);
                         <th>Email</th>
                         <th>Joined</th>
                       </tr>
+                      <?php
+                      
+                      foreach($res as $val){
+                      print_r($val);
+                      echo $val['name'];
+                      die(".");
+                        echo "<tr>";
+                        echo "<td>".$val['name']."</td>";
+                        echo "<td>".$val->username."</td>";
+                        echo "<td>".$val->timestamp."</td>";
+                        echo "</tr>";
+                      }
+                      ?>
                   </table>
                 </div>
               </div>
