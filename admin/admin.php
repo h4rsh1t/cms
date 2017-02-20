@@ -4,7 +4,6 @@ $s = mysqli_query($conn,"SELECT * from login where memberType='student'");
 $f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
 $faculty = mysqli_num_rows($f);
 $student = mysqli_num_rows($s);
-
 ?>
 
 <html lang="en">
@@ -25,11 +24,9 @@ $sql = "SELECT count(*) from login";
 $info = mysqli_query($conn,$sql);
 $res = mysqli_fetch_assoc($info);
 $count = $res['count(*)'];
-$sql = "SELECT * from login_log";
-$info = mysqli_query($conn,$sql);
-$res = mysqli_fetch_assoc($info);
-/*print_r($res);
-                      die(".");*/
+$sql = "SELECT * from login_log where 1";
+$info1 = mysqli_query($conn,$sql);
+
 ?>
     <nav class="navbar navbar-default">
       <div class="container">
@@ -121,15 +118,11 @@ $res = mysqli_fetch_assoc($info);
                         <th>Joined</th>
                       </tr>
                       <?php
-                      
-                      foreach($res as $val){
-                      print_r($val);
-                      echo $val['name'];
-                      die(".");
+                      while ($row = mysqli_fetch_row($info1)) {
                         echo "<tr>";
-                        echo "<td>".$val['name']."</td>";
-                        echo "<td>".$val->username."</td>";
-                        echo "<td>".$val->timestamp."</td>";
+                        echo "<td>".$row[1]."</td>"; //row[1] = name
+                        echo "<td>".$row[0]."</td>"; //row[0] = username
+                        echo "<td>".$row[2]."</td>"; //row[2] = timestamp
                         echo "</tr>";
                       }
                       ?>

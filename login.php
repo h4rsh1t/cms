@@ -20,7 +20,8 @@ if(mysqli_num_rows($result) > 0){
 $sql = "SELECT * from user_info WHERE username = '$email'";
 $info = mysqli_query($conn,$sql);
 $res = mysqli_fetch_assoc($info);
-$sql = "insert into login_log values('$email','$res->name','')";
+$name = $res['name'];
+$sql = "insert into login_log values('$email','$name','')";
 $info = mysqli_query($conn,$sql);
 
 $_SESSION["info_user"] = json_encode($res);
