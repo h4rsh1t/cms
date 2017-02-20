@@ -19,7 +19,7 @@ $student = mysqli_num_rows($s);
   </head>
   <body>
 <?php
-$sql = "SELECT * from login_log group by username";
+$sql = "SELECT username,name,max(time) from login_log GROUP by username order by time desc";
 $info1 = mysqli_query($conn,$sql);
 
 ?>
@@ -87,7 +87,7 @@ $info1 = mysqli_query($conn,$sql);
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span><?php echo $student; ?></h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $student; ?></h2>
                     <h4>Student</h4>
                   </div>
                 </div>
