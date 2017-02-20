@@ -21,7 +21,7 @@ $student = mysqli_num_rows($s);
 <?php
 $sql = "SELECT username,name,max(time) from login_log GROUP by username order by time desc";
 $info1 = mysqli_query($conn,$sql);
-$sql = "select count(*) from user_info where active= 1";
+$sql = "select * from user_info where active= 1";
 $info2 = mysqli_query($conn,$sql);
 $active_users = mysqli_num_rows($info2);
 
