@@ -1,41 +1,54 @@
-<html>
-<head>
-    <title>
-        Welcome
-    </title>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Members Area | Account Login</title>
+    <!-- Bootstrap core CSS -->
+    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/css/style.css" rel="stylesheet">
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <style>
-        .modal-header, h4, .close {
-            background-color: #5cb85c;
-            color:white !important;
-            text-align: center;
-            font-size: 30px;
-        }
-        .modal-footer {
-            background-color: #f9f9f9;
-        }
-    </style>
-
-
-</head>
-<body>
-<div class="container">
-
-    <form class="form-signin" method="post" action="login.php">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" name="inputEmail" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-            <a data-toggle="modal" href="#signUpModal">New User ?</a>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.php">Home</a>
+          <a class="navbar-brand" data-toggle="modal" href="#signUpModal">Sign Up</a>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+      </div>
+    </nav>
+
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center"> Members Area</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <form id="login" action="login.php" method="post" class="well">
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="inputEmail" placeholder="Enter Username">
+                  </div>
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="inputPassword" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-default btn-block" name="login">Login</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="modal fade" id="signUpModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -87,6 +100,12 @@
             </div>
         </div>
     </div>
-</div>
-</body>
+
+  <script>
+     CKEDITOR.replace( 'editor1' );
+ </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
