@@ -108,15 +108,37 @@ $active_users = mysqli_num_rows($info2);
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <form role="form" method="get">
-              <a type="button" data-toggle="modal" data-target="#addDatesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
-              <a type="button" data-toggle="modal" data-target="#addTimetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
-              <a type="button" data-toggle="modal" data-target="#mailBox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+              <a href="student.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+              <a href="student.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+              <a href="student.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
               </form>
             </div>
           </div>
 
           <div class="col-md-9">
-            Here is
+            <?php
+
+                @$id = $_REQUEST['id'];
+
+                if($id == "datesheet"){
+
+                    echo "Dateshhhet";
+
+                }
+                if($id == "mailbox"){
+
+                    include_once("inbox.php");
+
+                }
+                if($id == "timetable"){
+
+                    echo "Timetable";
+
+                }
+
+
+
+             ?>
           </div>
         </div>
       </div>

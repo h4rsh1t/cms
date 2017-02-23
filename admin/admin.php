@@ -164,10 +164,7 @@ $active_users = mysqli_num_rows($info2);
       </div>
     </section>
 
-    <footer id="footer">
-      <p>Copyright Shubham Bansal, &copy; 2017</p>
-    </footer>
-
+    
     <!-- Modals -->
 
     <!-- Add User -->
