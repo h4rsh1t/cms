@@ -2,7 +2,7 @@
 
   if(isset($_POST['login'])){
 
-    if($_POST["email"] == "admin" && $_POST["pass"] == "admin"){
+    if($_POST["email"] === "admin" && $_POST["pass"] === "admin"){
       header('Location: admin.php');
     }else{
       die("Error");
@@ -70,11 +70,6 @@
         </div>
       </div>
     </section>
-
-    <footer id="footer">
-      <p>Copyright Shubham Bansal &copy; 2017</p>
-    </footer>
-
   <script>
      CKEDITOR.replace( 'editor1' );
  </script>

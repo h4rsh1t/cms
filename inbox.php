@@ -41,7 +41,7 @@ $sql = mysqli_query($conn,"SELECT * FROM mail_all WHERE reciever = '".$_SESSION[
                   echo "<tr>";
                   echo "<td>".$i."</td>"; //row[1] = name
                   echo "<td>".$row['sender']."</td>"; //row[0] = username
-                  echo "<td><a href='view.php/?id=".$row['sr_no']."'>".$row['subject']."</a></td>"; //row[2] = timestamp
+                  echo "<td><a href='view.php?id=".$row['sr_no']."'>".$row['subject']."</a></td>"; //row[2] = timestamp
                   echo "</tr>";
                   $i++;
                 }

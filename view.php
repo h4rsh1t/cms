@@ -1,75 +1,190 @@
-<html>
-<head>
-    <title>
-        Welcome
-    </title>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</head>
-<body style="background-color:#eee">
-
 <?php
-include 'connect.php';
-session_start();
 
-$id = @$_GET['id'];
-/*echo($_GET['id']);
-die(".");*/
+ ?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome | Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/css/style.css" rel="stylesheet">
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="admin.php">Dashboard</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Hello </a></li>
+            <li>
+              <form method="post" >
+          		    <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
+          	  </form>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-if(!isset($id)) {
-   header('location: inbox.php');
-}
-elseif(isset($id)) {
-  
-  $grab_pm = mysqli_query($conn,"SELECT * FROM mail_all WHERE sr_no = '".$id."'");
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <h1> Welcome </h1>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown create">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#composeModal" aria-haspopup="true" aria-expanded="true">
+                Compose
+              </button>
 
-  if(mysqli_num_rows($grab_pm) > 0){
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-	   while($r= mysqli_fetch_assoc($grab_pm)) {
-          $_SESSION['rec'] = $r['sender'];
-          $_SESSION['subj'] = $r['subject'];
-  		   echo "<p>From: ".$r['sender']."</p>";
-   		    echo "<p>Subject : ".$r['subject']."</p>";
-   		     echo "<p>Message : ".$r['content']."</p>";
-   	 }
-   }
-}
+    <section id="breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="active">Dashboard</li>
+        </ol>
+      </div>
+    </section>
 
-if(isset($_POST['reply'])){
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="well">
+              <!-- Image displays here -->
+              <?php //echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+              <form role="form" action="" method="post" enctype="multipart/form-data">
+                <input id="avatar" name="avatar" type="file" class="file-loading">
+                <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
+              </form>
+            </div>
+            <div class="list-group">
+              <a href="index.html" class="list-group-item active main-color-bg">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+              </a>
+              <form role="form" method="get">
+              <a href="student.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+              <a href="student.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+              <a href="student.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+              </form>
+            </div>
+          </div>
 
-  
-  $sub = "RE: ".$_SESSION['subj'];
-  $msg = $_POST['replyMessage'];
-  $reply = "INSERT INTO mail_all VALUES('".$_SESSION['student']."','".$_SESSION['rec']."','".$sub."','inbox','".$msg."',NULL,NULL)";
-  if(mysqli_query($conn,$reply)){
-    header('Location:../inbox.php');
-  }
-  else{
-    die("not Sent");
-  }
-}
+          <div class="col-md-9">
 
-if(isset($_POST['delete'])){
+            <?php
+            include 'connect.php';
+            session_start();
 
-  $delete = "DELETE FROM mail_all WHERE sr_no = $id";
-  if(mysqli_query($conn,$delete)){
-    header('Location:../inbox.php');
-  }else{
-    die("DAMM");
-  }
-  
-}  
+            $id = @$_GET['id'];
+            /*echo($_GET['id']);
+            die(".");*/
 
 
+              $grab_pm = mysqli_query($conn,"SELECT * FROM mail_all WHERE sr_no = '".$id."'");
 
-?>
-<form method="POST" action="">
-  <textarea name="replyMessage"></textarea>
-  <button type="submit" name="reply" class="btn btn-success">Reply</button>
-  <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-</form>
+              if(mysqli_num_rows($grab_pm) > 0){
 
-</body>
+                 while($r= mysqli_fetch_assoc($grab_pm)) {
+                      $_SESSION['rec'] = $r['sender'];
+                      $_SESSION['subj'] = $r['subject'];
+                     echo "<p>From: ".$r['sender']."</p>";
+                      echo "<p>Subject : ".$r['subject']."</p>";
+                       echo "<p>Message : ".$r['content']."</p>";
+                 }
+               }
+
+
+            if(isset($_POST['reply'])){
+
+
+              $sub = "RE: ".$_SESSION['subj'];
+              $msg = $_POST['replyMessage'];
+              $reply = "INSERT INTO mail_all VALUES('".$_SESSION['student']."','".$_SESSION['rec']."','".$sub."','inbox','".$msg."',NULL,NULL)";
+              if(mysqli_query($conn,$reply)){
+                //header('Location:../inbox.php');
+              }
+              else{
+                die("not Sent");
+              }
+            }
+
+            if(isset($_POST['delete'])){
+
+              $delete = "DELETE FROM mail_all WHERE sr_no = $id";
+              if(mysqli_query($conn,$delete)){
+
+              }else{
+
+              }
+
+            }
+
+
+
+            ?>
+            <form method="POST" action="">
+              <textarea name="replyMessage"></textarea>
+              <button type="submit" name="reply" class="btn btn-success">Reply</button>
+              <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Modals -->
+
+    <!-- Add User -->
+    <div class="modal fade" id="composeModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #5e5e5e;text-align: center;color: white !important;font-size: 30px">
+                    <h6 style="font-size: 20px">New Message</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" style="padding: 40px 50px">
+                    <form role="form" method="post" action="mailsend.php">
+                        <div class="form-group">
+                            <lable for="to">To: </lable>
+                            <input type="text" class="form-control" name="to" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="subject">Subject: </lable>
+                            <input type="text" class="form-control" name="subject" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="body">Body: </lable>
+                            <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success"  type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script>
+     CKEDITOR.replace( 'editor1' );
+ </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
