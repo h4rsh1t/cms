@@ -1,17 +1,23 @@
 <?php
 include "../connect.php";
+
+if(isset($_POST['logout'])){
+  session_destroy();
+  header('location:index.php');
+}
+
 $s = mysqli_query($conn,"SELECT * from login where memberType='student'");
 $f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
 $faculty = mysqli_num_rows($f);
 $student = mysqli_num_rows($s);
-$picQ = "SELECT pic from user_info where username='13csu120'";
+/*$picQ = "SELECT pic from user_info where username='13csu120'";
 $result = mysqli_query($conn,$picQ);
 if(mysqli_num_rows($result) > 0){
 
     $pic = mysqli_fetch_assoc($result);
     $profile = "../profilepics/".$pic["pic"];
 }
-
+*/
 
 ?>
 
@@ -52,7 +58,10 @@ $active_users = mysqli_num_rows($info2);
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome</a></li>
-            <li><a href="index.php">Logout</a></li>
+            <li>
+              <form role="form" action="" method="post">
+                <button type="submit" class="btn btn-danger" name="logout"> Logout</button>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -164,7 +173,7 @@ $active_users = mysqli_num_rows($info2);
       </div>
     </section>
 
-    
+
     <!-- Modals -->
 
     <!-- Add User -->
