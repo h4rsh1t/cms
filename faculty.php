@@ -1,124 +1,166 @@
 <?php
 session_start();
+include "connect.php";
 
-	if(!isset($_SESSION['faculty'])){
-		header("Location:index.php");
-	}
-	if(isset($_POST["logout"])){
-		session_destroy();
-		header('location:index.php');
-	}
-	?>
-<html>
-<head>
-    <title>Faculty Portal | Welcome</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery-2.2.4.min.js"></script>
+if(!isset($_SESSION['faculty'])){
+  header("Location:index.php");
+}
+if(isset($_POST['logout'])){
+  session_destroy();
+  header('Location:index.php');
+}
+
+// Yeh code hai image display ka
+/*$picQ = "SELECT pic from user_info where username='".$_SESSION['student']."'";
+$result = mysqli_query($conn,$picQ);
+if(mysqli_num_rows($result) > 0){
+
+    $pic = mysqli_fetch_assoc($result);
+    $profile = "../profilepics/".$pic["pic"];
+}*/
+  $info_user = json_decode($_SESSION["info_user"]);
+
+?>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome | Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/css/style.css" rel="stylesheet">
+    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="admin.php">Dashboard</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
+            <li>
+              <form method="post" >
+          		    <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
+          	  </form>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <h1> Welcome </h1>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown create">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#composeModal" aria-haspopup="true" aria-expanded="true">
+                Compose
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="active">Dashboard</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="well">
+              <!-- Image displays here -->
+              <?php //echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+              <form role="form" action="" method="post" enctype="multipart/form-data">
+                <input id="avatar" name="avatar" type="file" class="file-loading">
+                <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
+              </form>
+            </div>
+            <div class="list-group">
+              <a href="index.html" class="list-group-item active main-color-bg">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+              </a>
+              <form role="form" method="get">
+              <a href="faculty.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+              <a href="faculty.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+              <a href="faculty.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <?php
+                @$id = $_REQUEST['id'];
+                if($id == "datesheet"){
+                    include_once("datesheet.php");
+                }
+                if($id == "mailbox"){
+                    include_once("inbox.php");
+                }
+                if($id == "timetable"){
+                    include_once("timetable.php");
+                }
+             ?>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Modals -->
+
+    <!-- Add User -->
+    <div class="modal fade" id="composeModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #5e5e5e;text-align: center;color: white !important;font-size: 30px">
+                    <h6 style="font-size: 20px">New Message</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" style="padding: 40px 50px">
+                    <form role="form" method="post" action="mailsend.php">
+                        <div class="form-group">
+                            <lable for="to">To: </lable>
+                            <input type="text" class="form-control" name="to" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="subject">Subject: </lable>
+                            <input type="text" class="form-control" name="subject" required />
+                        </div>
+                        <div class="form-group">
+                            <lable for="body">Body: </lable>
+                            <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success"  type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script>
+     CKEDITOR.replace( 'editor1' );
+ </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-</head>
-<body style="background-color: #eeeeee ; padding-left: 150px;padding-top: 150px">
-	<form method="post" >
-		<button type="submit" class="btn btn-default" name="logout" method="post">Logout</button>
-	</form>
-
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#mailbox">Mail</a></li>
-    <li><a data-toggle="tab" href="#timeTable">Time Table</a></li>
-    <li><a data-toggle="tab" href="#dateSheet">Date Sheet</a></li>
-</ul>
-<div class="tab-content">
-    <div id="mailbox" class="tab-pane fade in active">
-			<button type="button" data-toggle="modal" class="btn btn-danger" href="#composeModal">Compose</button>
-    </div>
-    <div id="timeTable" class="tab-pane fade in">
-        <div style="padding-top: 50px"><button class="btn btn-default" data-toggle="modal" href="#timeTableChangeModal" name="updateTimeTable">
-                Change
-            </button>
-        </div>
-
-
-    </div>
-    <div id="dateSheet" class="tab-pane fade in">
-        <div style="padding-top: 50px"><button class="btn btn-default" data-toggle="modal" href="#dateSheetChangeModal" name="updateDateSheet">
-                Change
-            </button>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="timeTableChangeModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form role="form" method="post" action="timeTableChange.php">
-                    <div class="form-group">
-                        <lable for="to">To: </lable>
-                        <input type="text" class="form-control" name="to">
-                    </div>
-                    <div class="form-group">
-                        <lable for="body">Body: </lable>
-                        <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
-                    </div>
-                    <button class="btn btn-success" type="submit">Send</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="dateSheetChangeModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form role="form" method="post" action="dateSheetChange.php">
-                    <div class="form-group">
-                        <lable for="to">To: </lable>
-                        <input type="text" class="form-control" name="to">
-                    </div>
-                    <div class="form-group">
-                        <lable for="body">Body: </lable>
-                        <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
-                    </div>
-                    <button class="btn btn-success" type="submit">Send</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="composeModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #5e5e5e;text-align: center;color: white !important;font-size: 30px">
-                <h6 style="font-size: 20px">New Message</h6>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body" style="padding: 40px 50px">
-                <form role="form" method="post" action="mailsend.php">
-                    <div class="form-group">
-                        <lable for="to">To: </lable>
-                        <input type="text" class="form-control" name="to" required />
-                    </div>
-                    <div class="form-group">
-                        <lable for="subject">Subject: </lable>
-                        <input type="text" class="form-control" name="subject" required />
-                    </div>
-                    <div class="form-group">
-                        <lable for="body">Body: </lable>
-                        <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success"  type="submit">Send</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-</body>
+  </body>
 </html>

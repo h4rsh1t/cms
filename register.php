@@ -5,8 +5,6 @@ session_start();
 
 if($_POST['psw']===$_POST['Rpsw']){
     mysqli_query($conn,"insert into user_info values('".$_POST['username']."','".$_POST['fullName']."','".$_POST['stream'].$_POST['semester'].$_POST['section']."',".$_POST['phone'].",0)");
-    $mail = "mail_".$_POST['username'];
-    $mail1 = $_POST['stream']."_".$_POST['semester']."_".$_POST['section'];
 
     $_SESSION["mail"] = $_POST['username'];
 
@@ -20,4 +18,3 @@ if($_POST['psw']===$_POST['Rpsw']){
 
 
 ?>
-

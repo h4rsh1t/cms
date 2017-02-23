@@ -5,11 +5,11 @@ include "connect.php";
 if(!isset($_SESSION['student'])){
   header("Location:index.php");
 }
+if(isset($_POST['logout'])){
+  session_destroy();
+  header('Location:index.php');
+}
 
-$s = mysqli_query($conn,"SELECT * from login where memberType='student'");
-$f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
-$faculty = mysqli_num_rows($f);
-$student = mysqli_num_rows($s);
 // Yeh code hai image display ka
 /*$picQ = "SELECT pic from user_info where username='".$_SESSION['student']."'";
 $result = mysqli_query($conn,$picQ);
@@ -18,7 +18,7 @@ if(mysqli_num_rows($result) > 0){
     $pic = mysqli_fetch_assoc($result);
     $profile = "../profilepics/".$pic["pic"];
 }*/
-
+  $info_user = json_decode($_SESSION["info_user"]);
 
 ?>
 
@@ -27,39 +27,28 @@ if(mysqli_num_rows($result) > 0){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Dashboard</title>
+    <title>Welcome | Dashboard</title>
     <!-- Bootstrap core CSS -->
     <link href="admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="admin/css/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-<?php
-$sql = "SELECT username,name,max(time) from login_log GROUP by username order by time desc";
-$info1 = mysqli_query($conn,$sql);
-$sql = "select * from user_info where active= 1";
-$info2 = mysqli_query($conn,$sql);
-$active_users = mysqli_num_rows($info2);
-
-?>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Admin</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="admin.php">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome</a></li>
-            <li><a href="index.php">Logout</a></li>
+            <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
+            <li>
+              <form method="post" >
+          		    <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
+          	  </form>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -69,7 +58,7 @@ $active_users = mysqli_num_rows($info2);
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard </h1>
+            <h1> Welcome </h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -122,7 +111,7 @@ $active_users = mysqli_num_rows($info2);
 
                 if($id == "datesheet"){
 
-                    echo "Dateshhhet";
+                    include_once("datesheet.php");
 
                 }
                 if($id == "mailbox"){
@@ -132,7 +121,7 @@ $active_users = mysqli_num_rows($info2);
                 }
                 if($id == "timetable"){
 
-                    echo "Timetable";
+                    include_once("timetable.php");
 
                 }
 
@@ -177,39 +166,6 @@ $active_users = mysqli_num_rows($info2);
             </div>
         </div>
     </div>
-
-    <!--
-    <div class="modal-fade" id="addDatesheet" tabindex="-1" role="dialog" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-fade" id="addTimetable" tabindex="-1" role="dialog" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-fade" id="mailBox" tabindex="-1" role="dialog" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>-->
 
   <script>
      CKEDITOR.replace( 'editor1' );

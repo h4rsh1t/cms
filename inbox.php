@@ -1,8 +1,12 @@
 <?php
 include "connect.php";
 
+if(isset($_SESSION['student'])){
 $sql = mysqli_query($conn,"SELECT * FROM mail_all WHERE reciever = '".$_SESSION['student']."'");
-
+}
+if(isset($_SESSION['faculty'])){
+$sql = mysqli_query($conn,"SELECT * FROM mail_all WHERE reciever = '".$_SESSION['faculty']."'");
+}
 
 ?>
 

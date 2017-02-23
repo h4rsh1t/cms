@@ -16,6 +16,6 @@ if(isset($_SESSION['coe'])){
 echo("$sql");
 
     mysqli_query($conn,$sql);
- 
+
 	header('location:student.php');
 ?>
