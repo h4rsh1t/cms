@@ -1,6 +1,9 @@
 <?php
 include "../connect.php";
-
+session_start();
+if(!isset($_SESSION['admin'])){
+  header('location:index.php');
+}
 if(isset($_POST['logout'])){
   session_destroy();
   header('location:index.php');

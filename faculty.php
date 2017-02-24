@@ -7,6 +7,7 @@ if(!isset($_SESSION['faculty'])){
 }
 if(isset($_POST['logout'])){
   session_destroy();
+  mysqli_query($conn,"UPDATE user_info SET active = 0 WHERE username = '".$_SESSION['faculty']."'");
   header('Location:index.php');
 }
 

@@ -3,7 +3,10 @@
   if(isset($_POST['login'])){
 
     if($_POST["email"] === "admin" && $_POST["pass"] === "admin"){
+      session_start();
+      $_SESSION['admin'] = "admin";
       header('Location: admin.php');
+
     }else{
       die("Error");
     }
