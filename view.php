@@ -19,7 +19,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="admin.php">Dashboard</a></li>
+            <li class="active"><a href="">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Hello </a></li>
@@ -72,7 +72,7 @@
               </form>
             </div>
             <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg">
+              <a href="" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <form role="form" method="get">
@@ -115,7 +115,7 @@
               $msg = $_POST['replyMessage'];
               $reply = "INSERT INTO mail_all VALUES('".$_SESSION['student']."','".$_SESSION['rec']."','".$sub."','inbox','".$msg."',NULL,NULL)";
               if(mysqli_query($conn,$reply)){
-                //header('Location:../inbox.php');
+                header('Location:student.php?id=mailbox');
               }
               else{
                 die("not Sent");
@@ -126,7 +126,7 @@
 
               $delete = "DELETE FROM mail_all WHERE sr_no = $id";
               if(mysqli_query($conn,$delete)){
-
+                header('Location:student.php?id=mailbox');
               }else{
 
               }
