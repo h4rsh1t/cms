@@ -4,6 +4,8 @@ session_start();
 	/*if(isset($_SESSION['login_user'])){
 		header("Location:student.php");
 	}*/
+//harshit jain
+
 include "connect.php";
 
 $email = $_POST['inputEmail'];
