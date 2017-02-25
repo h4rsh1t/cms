@@ -19,7 +19,11 @@ if(mysqli_num_rows($result) > 0){
     $pic = mysqli_fetch_assoc($result);
     $profile = "../profilepics/".$pic["pic"];
 }*/
+    $pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['student']."'");
   $info_user = json_decode($_SESSION["info_user"]);
+  
+  $pic_name = mysqli_fetch_assoc($pic1);
+  // echo $pic_name['pic']; 
 
 ?>
 
@@ -87,8 +91,10 @@ if(mysqli_num_rows($result) > 0){
           <div class="col-md-3">
             <div class="well">
               <!-- Image displays here -->
-              <?php //echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
-              <form role="form" action="" method="post" enctype="multipart/form-data">
+              
+              <img src="profilepics/<?=$pic_name['pic']; ?>" class="img-rounded img-responsive">
+
+              <form role="form" action="pic.php" method="post" enctype="multipart/form-data">
                 <input id="avatar" name="avatar" type="file" class="file-loading">
                 <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
               </form>

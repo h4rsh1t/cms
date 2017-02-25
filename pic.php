@@ -1,0 +1,29 @@
+<?php
+include "connect.php";
+
+session_start();
+
+
+$info = pathinfo($_FILES['avatar']['name']);
+$ext = $info['extension']; // get the extension of the file
+$newname = $_SESSION['student'].'.'.$ext; 
+
+$target = 'profilepics/'.$newname;
+if($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg')
+{
+	die("galat file hai");
+}
+if(move_uploaded_file( $_FILES['avatar']['tmp_name'], $target)){
+	if(mysqli_query($conn,"UPDATE `user_info` SET `pic` = '$newname' WHERE `username` = '".$_SESSION['student']."'")){
+		header("Location:student.php");
+	}
+	else{
+		die("marja firse");
+	}
+	
+}
+else {
+	die("marja");
+}
+
+?>
