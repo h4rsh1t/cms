@@ -16,6 +16,8 @@
         </div>
     </form>
 
+	
+	//bhuvan
     <script>
        CKEDITOR.replace( 'editor1' );
     </script>
