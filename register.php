@@ -4,7 +4,7 @@ include "connect.php";
 session_start();
 
 if($_POST['psw']===$_POST['Rpsw']){
-    mysqli_query($conn,"insert into user_info values('".$_POST['username']."','".$_POST['fullName']."','".$_POST['stream'].$_POST['semester'].$_POST['section']."',".$_POST['phone'].",0,default.png)");
+    mysqli_query($conn,"insert into user_info values('".$_POST['username']."','".$_POST['fullName']."','".$_POST['stream'].$_POST['semester'].$_POST['section']."',".$_POST['phone'].",0,'default.png')");
 
     $_SESSION["mail"] = $_POST['username'];
 
