@@ -104,7 +104,7 @@ $active_users = mysqli_num_rows($info2);
         <div class="row">
           <div class="col-md-3">
             <div class="well">
-              <?php echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+              <img src="vfv.jpg" class="img-rounded img-responsive" />
               <form role="form" action="" method="post" enctype="multipart/form-data">
                 <input id="avatar" name="avatar" type="file" class="file-loading">
                 <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
