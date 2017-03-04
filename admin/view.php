@@ -1,22 +1,9 @@
 <?php
-session_start();
-include "connect.php";
-
-if(!isset($_SESSION['student'])){
-  header("Location:index.php");
-}
 if(isset($_POST['logout'])){
   session_destroy();
-  mysqli_query($conn,"UPDATE user_info SET active = 0 WHERE username = '".$_SESSION['student']."'");
   header('Location:index.php');
 }
-
-    $pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['student']."'");
-  $info_user = json_decode($_SESSION["info_user"]);
-  
-  $pic_name = mysqli_fetch_assoc($pic1);
-?>
-
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -38,7 +25,7 @@ if(isset($_POST['logout'])){
             <li class="active"><a href="">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
+            <li><a href="#">Hello </a></li>
             <li>
               <form method="post" >
           		    <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
@@ -81,10 +68,8 @@ if(isset($_POST['logout'])){
           <div class="col-md-3">
             <div class="well">
               <!-- Image displays here -->
-              
-              <img src="profilepics/<?=$pic_name['pic']; ?>" class="img-rounded img-responsive">
-
-              <form role="form" action="pic.php" method="post" enctype="multipart/form-data">
+              <?php //echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+              <form role="form" action="" method="post" enctype="multipart/form-data">
                 <input id="avatar" name="avatar" type="file" class="file-loading">
                 <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
               </form>
@@ -102,29 +87,63 @@ if(isset($_POST['logout'])){
           </div>
 
           <div class="col-md-9">
+
             <?php
+            include 'connect.php';
+            session_start();
 
-                @$id = $_REQUEST['id'];
-
-                if($id == "datesheet"){
-
-                    include_once("datesheet.php");
-
-                }
-                if($id == "mailbox"){
-
-                    include_once("inbox.php");
-
-                }
-                if($id == "timetable"){
-
-                    include_once("timetable.php");
-
-                }
+            $id = @$_GET['id'];
+            /*echo($_GET['id']);
+            die(".");*/
 
 
+              $grab_pm = mysqli_query($conn,"SELECT * FROM mail_all WHERE sr_no = '".$id."'");
 
-             ?>
+              if(mysqli_num_rows($grab_pm) > 0){
+
+                 while($r= mysqli_fetch_assoc($grab_pm)) {
+                      $_SESSION['rec'] = $r['sender'];
+                      $_SESSION['subj'] = $r['subject'];
+                     echo "<p>From: ".$r['sender']."</p>";
+                      echo "<p>Subject : ".$r['subject']."</p>";
+                       echo "<p>Message : ".$r['content']."</p>";
+                 }
+               }
+
+
+            if(isset($_POST['reply'])){
+
+
+              $sub = "RE: ".$_SESSION['subj'];
+              $msg = $_POST['replyMessage'];
+              $reply = "INSERT INTO mail_all VALUES('".$_SESSION['student']."','".$_SESSION['rec']."','".$sub."','inbox','".$msg."',NULL,NULL)";
+              if(mysqli_query($conn,$reply)){
+                header('Location:student.php?id=mailbox');
+              }
+              else{
+                die("not Sent");
+              }
+            }
+
+            if(isset($_POST['delete'])){
+
+              $delete = "DELETE FROM mail_all WHERE sr_no = $id";
+              if(mysqli_query($conn,$delete)){
+                header('Location:student.php?id=mailbox');
+              }else{
+
+              }
+
+            }
+
+
+
+            ?>
+            <form method="POST" action="">
+              <textarea name="replyMessage"></textarea>
+              <button type="submit" name="reply" class="btn btn-success">Reply</button>
+              <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+            </form>
           </div>
         </div>
       </div>

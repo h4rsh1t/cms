@@ -33,7 +33,7 @@ session_start();
     <div id="timeTable" class="tab-pane fade in">
        <div class="row">
            <div class="col-md-4">
-                <form role="form" method="post" action="uploadTt.php" enctype="multipart/form-data">
+                <form role="form" method="post" action="admin/uploadTt.php" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label for="semester">Semester</label>
@@ -76,7 +76,7 @@ session_start();
        </div>
     </div>
     <div id="dateSheet" class="tab-pane fade in">
-        <form role="form" action="uploadDs.php" method="post" enctype="multipart/form-data">
+        <form role="form" action="admin/uploadDs.php" method="post" enctype="multipart/form-data">
             <div class="form-group">Please Select the file to be uploaded</div>
             <div class="form-group"> <input type="file" name="fileToUpload" id="fileToUpload"><span class="small">Maximum size: 1mb</span> </div>
             <div class="form-group"><button class="btn btn-default" name="dateSheetUpload">Upload</button></div>

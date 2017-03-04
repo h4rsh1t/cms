@@ -1,29 +1,41 @@
 <?php
 include "../connect.php";
 session_start();
-if(!isset($_SESSION['admin'])){
-  header('location:index.php');
+if(!isset($_SESSION['admin'])) {
+    header('location:index.php');
 }
-if(isset($_POST['logout'])){
-  session_destroy();
-  header('location:index.php');
+if(isset($_POST['logout'])) {
+    session_destroy();
+    header('location:index.php');
 }
 
-$s = mysqli_query($conn,"SELECT * from login where memberType='student'");
-$f = mysqli_query($conn,"SELECT * from login where memberType='faculty'");
-$faculty = mysqli_num_rows($f);
-$student = mysqli_num_rows($s);
-/*$picQ = "SELECT pic from user_info where username='13csu120'";
-$result = mysqli_query($conn,$picQ);
-if(mysqli_num_rows($result) > 0){
-
-    $pic = mysqli_fetch_assoc($result);
-    $profile = "../profilepics/".$pic["pic"];
+if(isset($_SESSION['uploadtt'])) {
+    echo "<script> alert('Time Table Uploaded Successfuly!');</script>";
+    $_SESSION['uploadtt'] = "";
 }
-*/
+
+if(isset($_SESSION['updatett'])){
+    echo "<script> alert('Time Table Updated Successfuly!');</script>";
+    $_SESSION['updatett']="";
+}
+
+if(isset($_SESSION['errortt'])) {
+    echo "<script> alert('Something went wrong!! Please try again.!');</script>";
+    $_SESSION['errortt']="";
+}
+
+
+if(isset($_SESSION['updateds'])){
+     echo "<script> alert('Date Sheet Uploaded Successfuly!');</script>";
+    $_SESSION['updateds']="";
+}
+
+if(isset($_SESSION['errords'])) {
+    echo "<script> alert('Something went wrong!! Please try again.!');</script>";
+    $_SESSION['errords']="";
+}
 
 ?>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -36,14 +48,6 @@ if(mysqli_num_rows($result) > 0){
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-<?php
-$sql = "SELECT username,name,max(time) from login_log GROUP by username order by time desc";
-$info1 = mysqli_query($conn,$sql);
-$sql = "select * from user_info where active= 1";
-$info2 = mysqli_query($conn,$sql);
-$active_users = mysqli_num_rows($info2);
-
-?>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -111,66 +115,43 @@ $active_users = mysqli_num_rows($info2);
               </form>
             </div>
             <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg">
+              <a href="admin.php?id=dash" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a type="button" data-toggle="modal" data-target="#addDatesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
-              <a type="button" data-toggle="modal" data-target="#addTimetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
-              <a type="button" data-toggle="modal" data-target="#mailBox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+              <a href="admin.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+              <a href="admin.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+              <a href="admin.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
             </div>
           </div>
           <div class="col-md-9">
 
-            <div class="panel panel-default">
-              <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Website Overview</h3>
-              </div>
-              <div class="panel-body">
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $student; ?></h2>
-                    <h4>Student</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $faculty;?></h2>
-                    <h4>Faculty</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $active_users;?></h2>
-                    <h4>Active Users</h4>
-                  </div>
-                </div>
-                </div>
-              </div>
+              <?php
 
-              <!-- Latest Users -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Latest Users</h3>
-                </div>
-                <div class="panel-body">
-                  <table class="table table-striped table-hover">
-                      <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Joined</th>
-                      </tr>
-                      <?php
-                      while ($row = mysqli_fetch_row($info1)) {
-                        echo "<tr>";
-                        echo "<td>".$row[1]."</td>"; //row[1] = name
-                        echo "<td>".$row[0]."</td>"; //row[0] = username
-                        echo "<td>".$row[2]."</td>"; //row[2] = timestamp
-                        echo "</tr>";
-                      }
-                      ?>
-                  </table>
-                </div>
-              </div>
+              @$id = $_REQUEST['id'];
+
+              if($id == "datesheet"){
+
+                  include_once("uploadDs.php");
+
+              }
+              if($id == "mailbox"){
+
+                  include_once("inbox.php");
+
+              }
+              if($id == "timetable"){
+
+                  include_once("uploadTt.php");
+
+              }
+              if($id == "dash"){
+                  include_once("dash.php");
+              }
+
+
+
+              ?>
+
           </div>
         </div>
       </div>
@@ -216,38 +197,7 @@ $active_users = mysqli_num_rows($info2);
       </div>
     </div>
   </div>
-    <!--
-    <div class="modal-fade" id="addDatesheet" tabindex="-1" role="dialog" >
-      <div class="modal-dialog">
-        <div class="modal-content">
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-fade" id="addTimetable" tabindex="-1" role="dialog" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-fade" id="mailBox" tabindex="-1" role="dialog" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>-->
 
   <script>
      CKEDITOR.replace( 'editor1' );
