@@ -77,16 +77,16 @@ if(isset($_POST['timetable'])) {
             if (mysqli_num_rows($result) > 0) {
                 mysqli_query($conn, $sql2);
                 $_SESSION['updatett'] = "OK";
-                header('Location : admin.php');
+                header('Location:admin.php');
             } else {
                 mysqli_query($conn, $sql);
                 $_SESSION['uploadtt'] = "OK";
-                header("location: admin.php");
+                header("location:admin.php");
             }
 
         } else {
             $_SESSION['errortt'] = "OK";
-            header('Location : admin.php');
+            header('Location:admin.php');
             //echo "Sorry, there was an error uploading your file.";
         }
     }
@@ -141,12 +141,12 @@ if(isset($_POST['datesheet'])) {
             $sql = "UPDATE datesheet SET filename='" . basename($_FILES["fileToUpload"]["name"]) . "' WHERE id = 1";
             if (mysqli_query($conn, $sql)) {
                 $_SESSION['updateds'] = "OK";
-                header('Location : admin.php');
+                header('Location:admin.php');
             }
         } else {
             $_SESSION['errords'] = "OK";
             //echo "Sorry, there was an error uploading your file.";
-            //header('Location : admin.php');
+            header('Location:admin.php');
         }
     }
 
