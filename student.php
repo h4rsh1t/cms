@@ -97,6 +97,8 @@ if(isset($_POST['logout'])){
               <a href="student.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
               <a href="student.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
               <a href="student.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+              <a href="student.php?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+
               </form>
             </div>
           </div>
@@ -119,6 +121,11 @@ if(isset($_POST['logout'])){
                 if($id == "timetable"){
 
                     include_once("timetable.php");
+
+                }
+                if($id == "notes"){
+
+                    include_once("viewNotes.php");
 
                 }
 
