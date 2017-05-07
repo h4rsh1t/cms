@@ -1,10 +1,10 @@
 <?php
 
-    if(isset($_POST['viewNotes'])){
+    /*if(isset($_POST['viewNotes'])){
         header("location:notes/");
         //header("location:n_test.php");
         //header("location:directory.php");
-    }
+    }*/
 
     if(isset($_POST['upload'])){
 
@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<form role="form" method="post">
+<form role="form" method="post" action="directory.php">
     <div class="form-group">
         <button name="viewNotes" class="btn btn-info" type="submit">View</button>
     </div>

@@ -1,8 +1,8 @@
 <?php
 if(!empty($_GET['file'])){
     $fileName = basename($_GET['file']);
-    $filePath = 'notes/'.$fileName;
-    if(!empty($fileName) && file_exists($filePath)){
+    $filePath = $_GET['file'];
+    if(file_exists($filePath)){
         // Define headers
         header("Cache-Control: public");
         header("Content-Description: File Transfer");

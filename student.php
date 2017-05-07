@@ -52,15 +52,24 @@ if(isset($_POST['logout'])){
     <header id="header">
       <div class="container">
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-8">
             <h1> Welcome </h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#composeModal" aria-haspopup="true" aria-expanded="true">
-                Compose
-              </button>
-
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Create Content
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a type="button" data-toggle="modal" data-target="#composeModal">Compose</a></li>
+                    <li><a type="button" data-toggle="modal" data-target="#addTask">Add Task</a></li>
+                </ul>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown create">
+                <button class="btn btn-default" type="button" data-toggle="modal" data-target="#changePassword">Change Password</button>
             </div>
           </div>
         </div>
@@ -98,6 +107,7 @@ if(isset($_POST['logout'])){
               <a href="student.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
               <a href="student.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
               <a href="student.php?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+              <a href="student.php?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
 
               </form>
             </div>
@@ -107,30 +117,21 @@ if(isset($_POST['logout'])){
             <?php
 
                 @$id = $_REQUEST['id'];
-
                 if($id == "datesheet"){
-
                     include_once("datesheet.php");
-
                 }
                 if($id == "mailbox"){
-
                     include_once("inbox.php");
-
                 }
                 if($id == "timetable"){
-
                     include_once("timetable.php");
-
                 }
                 if($id == "notes"){
-
-                    include_once("viewNotes.php");
-
+                    include_once("directory.php");
                 }
-
-
-
+                if($id == "taskList"){
+                    include_once("taskList.php");
+                }
              ?>
           </div>
         </div>
@@ -171,7 +172,66 @@ if(isset($_POST['logout'])){
         </div>
     </div>
 
-  <script>
+    <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Task</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="addTask.php" method="post">
+                        <div class="form-group">
+                            <label for="taskName">Task Name</label>
+                            <input type="text" class="form-control" name="taskName" placeholder="Enter Task Name" required>
+                        </div>
+                        <div class="form-group">
+                            <lable for="body">Body: </lable>
+                            <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Add Task</button>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="changePass.php" method="post">
+                        <div class="form-group">
+                            <label for="oldPass">Old Password</label>
+                            <input type="text" class="form-control" name="oldPass" placeholder="Enter Your Old Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPass">New Password</label>
+                            <input type="text" class="form-control" name="newPass" placeholder="Enter Your New Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rNewPass">Repeat New Password</label>
+                            <input type="text" class="form-control" name="rNewPass" placeholder="Repeat Your New Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Update Password</button>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
      CKEDITOR.replace( 'editor1' );
  </script>
 

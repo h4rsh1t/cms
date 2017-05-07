@@ -17,7 +17,7 @@
                     }
 
                     echo "<li>";
-                    echo  '<a href="download.php?file='.$file.'">'.$file.'</a>';
+                    echo  '<a href="download.php?file='.$cleanPath.$file.'">'.$file.'</a>';
                     if(is_dir($cleanPath . $file) && is_readable($cleanPath . $file)){
                         $this->directory_children($cleanPath . $file);
 
