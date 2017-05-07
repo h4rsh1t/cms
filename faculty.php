@@ -11,14 +11,6 @@ if(isset($_POST['logout'])){
   header('Location:index.php');
 }
 
-// Yeh code hai image display ka
-/*$picQ = "SELECT pic from user_info where username='".$_SESSION['student']."'";
-$result = mysqli_query($conn,$picQ);
-if(mysqli_num_rows($result) > 0){
-
-    $pic = mysqli_fetch_assoc($result);
-    $profile = "../profilepics/".$pic["pic"];
-}*/
   $info_user = json_decode($_SESSION["info_user"]);
 
 ?>
@@ -44,7 +36,7 @@ if(mysqli_num_rows($result) > 0){
             <li class="active"><a href="admin.php">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
+            <li><a href="#">Hello , <?php //echo $info_user->name; ?></a></li>
             <li>
               <form method="post" >
           		    <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
@@ -101,6 +93,8 @@ if(mysqli_num_rows($result) > 0){
               <a href="faculty.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
               <a href="faculty.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
               <a href="faculty.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+              <a href="faculty.php?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+
               </form>
             </div>
           </div>
@@ -116,6 +110,9 @@ if(mysqli_num_rows($result) > 0){
                 }
                 if($id == "timetable"){
                     include_once("timetable.php");
+                }
+                if($id == "notes"){
+                    include_once("notes.php");
                 }
              ?>
           </div>
