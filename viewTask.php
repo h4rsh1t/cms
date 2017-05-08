@@ -2,6 +2,13 @@
 if(isset($_POST['logout'])){
     session_destroy();
     header('Location:index.php');
+
+    if(isset($_SESSION['student'])){
+        $page = "student.php";
+    }
+    if(isset($_SESSION['faculty'])){
+        $page = "faculty.php";
+    }
 }
 ?>
 <html lang="en">
@@ -79,11 +86,11 @@ if(isset($_POST['logout'])){
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
                     <form role="form" method="get">
-                        <a href="student.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
-                        <a href="student.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
-                        <a href="student.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
-                        <a href="student.php?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
-                        <a href="student.php?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
+                        <a href="<?php echo $page;?>?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+                        <a href="<?php echo $page;?>?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+                        <a href="<?php echo $page;?>?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+                        <a href="<?php echo $page;?>?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+                        <a href="<?php echo $page;?>?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
 
                     </form>
                 </div>

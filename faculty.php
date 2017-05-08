@@ -1,6 +1,12 @@
 <?php
 session_start();
 include "connect.php";
+if(isset($_SESSION['student'])){
+    $page = "student.php";
+}
+if(isset($_SESSION['faculty'])){
+    $page = "faculty.php";
+}
 
 if(!isset($_SESSION['faculty'])){
   header("Location:index.php");
@@ -102,11 +108,11 @@ $pic_name = mysqli_fetch_assoc($pic1);
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <form role="form" method="get">
-              <a href="faculty.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
-              <a href="faculty.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
-              <a href="faculty.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
-              <a href="faculty.php?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
-              <a href="faculty.php?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
+                  <a href="<?php echo $page;?>?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+                  <a href="<?php echo $page;?>?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+                  <a href="<?php echo $page;?>?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+                  <a href="<?php echo $page;?>?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+                  <a href="<?php echo $page;?>?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
 
               </form>
             </div>
@@ -139,63 +145,6 @@ $pic_name = mysqli_fetch_assoc($pic1);
 
     <!-- Modals -->
 
-    <!-- Add User -->
-    <div class="modal fade" id="composeModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #5e5e5e;text-align: center;color: white !important;font-size: 30px">
-                    <h6 style="font-size: 20px">New Message</h6>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" style="padding: 40px 50px">
-                    <form role="form" method="post" action="mailsend.php">
-                        <div class="form-group">
-                            <lable for="to">To: </lable>
-                            <input type="text" class="form-control" name="to" required />
-                        </div>
-                        <div class="form-group">
-                            <lable for="subject">Subject: </lable>
-                            <input type="text" class="form-control" name="subject" required />
-                        </div>
-                        <div class="form-group">
-                            <lable for="body">Body: </lable>
-                            <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success"  type="submit">Send</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Task</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form" action="addTask.php" method="post">
-                        <div class="form-group">
-                            <label for="taskName">Task Name</label>
-                            <input type="text" class="form-control" name="taskName" placeholder="Enter Task Name" required>
-                        </div>
-                        <div class="form-group">
-                            <lable for="body">Body: </lable>
-                            <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Add Task</button>
-
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
@@ -218,7 +167,7 @@ $pic_name = mysqli_fetch_assoc($pic1);
                             <label for="rNewPass">Repeat New Password</label>
                             <input type="text" class="form-control" name="rNewPass" placeholder="Repeat Your New Password" required>
                         </div>
-                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Update Password</button>
+                        <button type="submit" class="btn btn-success btn-block"> Update Password</button>
 
                     </form>
                     <div class="modal-footer">

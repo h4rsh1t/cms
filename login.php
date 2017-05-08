@@ -34,10 +34,7 @@ $_SESSION["info_user"] = json_encode($res);
 		$_SESSION["faculty"] = $email;
         header("location:faculty.php");
     }
-    else if($row["memberType"] == 'coe'){
-		$_SESSION["coe"] = $email;
-        header("location:coe.php");
-    }
+
 }
 
 ?>

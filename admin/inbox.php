@@ -84,20 +84,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script>
        CKEDITOR.replace( 'editor1' );
 
