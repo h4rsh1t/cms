@@ -25,6 +25,8 @@ $info2 = mysqli_query($conn,$sql);
 $active_users = mysqli_num_rows($info2);
 
 ?>
+
+
 <section id="main">
                 <div class="panel panel-default">
                     <div class="panel-heading main-color-bg">
