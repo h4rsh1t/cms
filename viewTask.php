@@ -82,6 +82,9 @@ if(isset($_POST['logout'])){
                         <a href="student.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
                         <a href="student.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
                         <a href="student.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+                        <a href="student.php?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+                        <a href="student.php?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
+
                     </form>
                 </div>
             </div>
@@ -129,7 +132,7 @@ if(isset($_POST['logout'])){
 
                 ?>
                 <form method="POST" action="">
-                    <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                    <button type="submit" name="delete" class="btn btn-success">Complete</button>
                 </form>
             </div>
         </div>

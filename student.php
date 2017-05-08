@@ -35,7 +35,7 @@ if(isset($_POST['logout'])){
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="">Dashboard</a></li>
+            <li class="active"><a href="student.php">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
@@ -99,7 +99,7 @@ if(isset($_POST['logout'])){
               </form>
             </div>
             <div class="list-group">
-              <a href="" class="list-group-item active main-color-bg">
+              <a href="student.php" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <form role="form" method="get">
