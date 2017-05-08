@@ -24,7 +24,7 @@ if(isset($_SESSION['faculty'])){
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Mail Box</h3>
+        <h3 class="panel-title">To Do List</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-hover">
