@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    if(isset($_SESSION['student'])){
+        header("Location:student.php");
+    }
+if(isset($_SESSION['faculty'])){
+    header("Location:faculty.php");
+}
+
+
+
+
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">

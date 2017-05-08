@@ -30,6 +30,7 @@ $_SESSION["info_user"] = json_encode($res);
     $_SESSION["page"] = "student.php";
         $pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['student']."'");
         $_SESSION['pic_name'] = mysqli_fetch_assoc($pic1);
+        $_SESSION['pic_upload'] = $email;
     header("location:student.php");
     }
     else if($row["memberType"] == 'faculty'){
@@ -37,9 +38,13 @@ $_SESSION["info_user"] = json_encode($res);
         $_SESSION["page"] = "faculty.php";
         $pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['faculty']."'");
         $_SESSION['pic_name'] = mysqli_fetch_assoc($pic1);
+        $_SESSION['pic_upload'] = $email;
         header("location:faculty.php");
     }
 
+}
+else{
+    header("Location:index.php");
 }
 
 ?>

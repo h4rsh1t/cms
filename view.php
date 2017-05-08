@@ -24,7 +24,7 @@ if(isset($_POST['logout'])){
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="">Dashboard</a></li>
+                <li class="active"><a href="<?php echo $_SESSION['page'];?>">Dashboard</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Hello ,<?php echo $info_user->name; ?></a></li>
@@ -71,13 +71,13 @@ if(isset($_POST['logout'])){
                 <div class="well">
                     <!-- Image displays here -->
                     <img src="profilepics/<?=$_SESSION['pic_name']['pic']; ?>" class="img-rounded img-responsive">
-                    <form role="form" action="" method="post" enctype="multipart/form-data">
+                    <form role="form" action="pic.php" method="post" enctype="multipart/form-data">
                         <input id="avatar" name="avatar" type="file" class="file-loading">
                         <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
                     </form>
                 </div>
                 <div class="list-group">
-                    <a href="" class="list-group-item active main-color-bg">
+                    <a href="<?php echo $_SESSION['page'];?>" class="list-group-item active main-color-bg">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
                     <form role="form" method="get">

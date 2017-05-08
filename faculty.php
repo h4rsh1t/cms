@@ -85,7 +85,7 @@ $info_user = json_decode($_SESSION['info_user']);
             <div class="well">
               <!-- Image displays here -->
                 <img src="profilepics/<?=$_SESSION['pic_name']['pic']; ?>" class="img-rounded img-responsive">
-              <form role="form" action="" method="post" enctype="multipart/form-data">
+              <form role="form" action="pic.php" method="post" enctype="multipart/form-data">
                 <input id="avatar" name="avatar" type="file" class="file-loading">
                 <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
               </form>
@@ -95,11 +95,11 @@ $info_user = json_decode($_SESSION['info_user']);
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <form role="form" method="get">
-                  <a href="<?php echo $page;?>?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
-                  <a href="<?php echo $page;?>?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
-                  <a href="<?php echo $page;?>?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
-                  <a href="<?php echo $page;?>?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
-                  <a href="<?php echo $page;?>?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
+                  <a href="<?php echo $_SESSION['page'];?>?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+                  <a href="<?php echo $_SESSION['page'];?>?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+                  <a href="<?php echo $_SESSION['page'];?>?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+                  <a href="<?php echo $_SESSION['page'];?>?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+                  <a href="<?php echo $_SESSION['page'];?>?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
 
               </form>
             </div>
