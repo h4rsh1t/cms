@@ -10,8 +10,10 @@ if(isset($_POST['logout'])){
   mysqli_query($conn,"UPDATE user_info SET active = 0 WHERE username = '".$_SESSION['faculty']."'");
   header('Location:index.php');
 }
+$pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['faculty']."'");
+$info_user = json_decode($_SESSION['info_user']);
 
-  $info_user = json_decode($_SESSION["info_user"]);
+$pic_name = mysqli_fetch_assoc($pic1);
 
 ?>
 
@@ -36,7 +38,7 @@ if(isset($_POST['logout'])){
             <li class="active"><a href="faculty.php">Dashboard</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Hello , <?php //echo $info_user->name; ?></a></li>
+            <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
             <li>
               <form method="post" >
           		    <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
