@@ -1,5 +1,6 @@
 <?php
-$msg = "";
+session_start();
+/*$msg = "";
 if($handle = opendir('notes/')){
  while (false !== ($file = readdir($handle))) {
  if (($file != ".")
@@ -22,4 +23,6 @@ if($handle = opendir('notes/')){
 <p><?php echo $msg ?></p>
 </ul>
 </body>
-</html>
+</html>*/
+echo $_SESSION["page"];
+?>

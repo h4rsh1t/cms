@@ -16,10 +16,7 @@ if(isset($_POST['logout'])){
   mysqli_query($conn,"UPDATE user_info SET active = 0 WHERE username = '".$_SESSION['faculty']."'");
   header('Location:index.php');
 }
-$pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['faculty']."'");
 $info_user = json_decode($_SESSION['info_user']);
-
-$pic_name = mysqli_fetch_assoc($pic1);
 
 ?>
 
@@ -62,17 +59,7 @@ $pic_name = mysqli_fetch_assoc($pic1);
             <h1> Welcome </h1>
           </div>
           <div class="col-md-2">
-            <div class="dropdown create">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Create Content
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a type="button" data-toggle="modal" data-target="#composeModal">Compose</a></li>
-                    <li><a type="button" data-toggle="modal" data-target="#addTask">Add Task</a></li>
-                </ul>
 
-            </div>
           </div>
             <div class="col-md-2">
                 <div class="dropdown create">
@@ -97,7 +84,7 @@ $pic_name = mysqli_fetch_assoc($pic1);
           <div class="col-md-3">
             <div class="well">
               <!-- Image displays here -->
-              <?php //echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+                <img src="profilepics/<?=$_SESSION['pic_name']['pic']; ?>" class="img-rounded img-responsive">
               <form role="form" action="" method="post" enctype="multipart/form-data">
                 <input id="avatar" name="avatar" type="file" class="file-loading">
                 <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>

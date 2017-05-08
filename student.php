@@ -11,10 +11,10 @@ if(isset($_POST['logout'])){
   header('Location:index.php');
 }
 
-    $pic1 = mysqli_query($conn,"SELECT pic from user_info where username = '".$_SESSION['student']."'");
+
   $info_user = json_decode($_SESSION["info_user"]);
   
-  $pic_name = mysqli_fetch_assoc($pic1);
+
 ?>
 
 <html lang="en">
@@ -79,7 +79,7 @@ if(isset($_POST['logout'])){
             <div class="well">
               <!-- Image displays here -->
               
-              <img src="profilepics/<?=$pic_name['pic']; ?>" class="img-rounded img-responsive">
+              <img src="profilepics/<?=$_SESSION['pic_name']['pic']; ?>" class="img-rounded img-responsive">
 
               <form role="form" action="pic.php" method="post" enctype="multipart/form-data">
                 <input id="avatar" name="avatar" type="file" class="file-loading">

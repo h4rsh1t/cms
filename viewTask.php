@@ -1,15 +1,11 @@
 <?php
+session_start();
+
 if(isset($_POST['logout'])){
     session_destroy();
     header('Location:index.php');
-
-    if(isset($_SESSION['student'])){
-        $page = "student.php";
-    }
-    if(isset($_SESSION['faculty'])){
-        $page = "faculty.php";
-    }
 }
+$info_user = json_decode($_SESSION['info_user']);
 ?>
 <html lang="en">
 <head>
@@ -32,7 +28,7 @@ if(isset($_POST['logout'])){
                 <li class="active"><a href="">Dashboard</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Hello </a></li>
+                <li><a href="#">Hello , <?php echo $info_user->name; ?></a></li>
                 <li>
                     <form method="post" >
                         <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
@@ -51,8 +47,8 @@ if(isset($_POST['logout'])){
             </div>
             <div class="col-md-2">
                 <div class="dropdown create">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#composeModal" aria-haspopup="true" aria-expanded="true">
-                        Compose
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#changePassword" aria-haspopup="true" aria-expanded="true">
+                        Change Password
                     </button>
 
                 </div>
@@ -75,7 +71,7 @@ if(isset($_POST['logout'])){
             <div class="col-md-3">
                 <div class="well">
                     <!-- Image displays here -->
-                    <?php //echo '<img src="'.$profile.'"class="img-rounded img-responsive" />';?>
+                    <img src="profilepics/<?=$_SESSION['pic_name']['pic']; ?>" class="img-rounded img-responsive">
                     <form role="form" action="" method="post" enctype="multipart/form-data">
                         <input id="avatar" name="avatar" type="file" class="file-loading">
                         <button type="submit" name="profileUpload" class="btn btn-success"> Upload</button>
@@ -86,11 +82,11 @@ if(isset($_POST['logout'])){
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
                     <form role="form" method="get">
-                        <a href="<?php echo $page;?>?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
-                        <a href="<?php echo $page;?>?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
-                        <a href="<?php echo $page;?>?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
-                        <a href="<?php echo $page;?>?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
-                        <a href="<?php echo $page;?>?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
+                        <a href="<?php echo $_SESSION['page'];?>?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
+                        <a href="<?php echo $_SESSION['page'];?>?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
+                        <a href="<?php echo $_SESSION['page'];?>?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+                        <a href="<?php echo $_SESSION['page'];?>?id=notes" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notes </a>
+                        <a href="<?php echo $_SESSION['page'];?>?id=taskList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
 
                     </form>
                 </div>
@@ -100,7 +96,7 @@ if(isset($_POST['logout'])){
 
                 <?php
                 include 'connect.php';
-                session_start();
+
 
                 $id = @$_GET['id'];
                 /*echo($_GET['id']);
@@ -117,6 +113,7 @@ if(isset($_POST['logout'])){
 
                         echo "<p>Task Name : ".$r['name']."</p>";
                         echo "<p>Content : ".$r['desc']."</p>";
+
                     }
                 }
 
@@ -149,32 +146,33 @@ if(isset($_POST['logout'])){
 
 <!-- Modals -->
 
-<!-- Add User -->
-<div class="modal fade" id="composeModal" role="dialog">
+<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #5e5e5e;text-align: center;color: white !important;font-size: 30px">
-                <h6 style="font-size: 20px">New Message</h6>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Change Password</h4>
             </div>
-            <div class="modal-body" style="padding: 40px 50px">
-                <form role="form" method="post" action="mailsend.php">
+            <div class="modal-body">
+                <form role="form" action="changePass.php" method="post">
                     <div class="form-group">
-                        <lable for="to">To: </lable>
-                        <input type="text" class="form-control" name="to" required />
+                        <label for="oldPass">Old Password</label>
+                        <input type="text" class="form-control" name="oldPass" placeholder="Enter Your Old Password" required>
                     </div>
                     <div class="form-group">
-                        <lable for="subject">Subject: </lable>
-                        <input type="text" class="form-control" name="subject" required />
+                        <label for="newPass">New Password</label>
+                        <input type="text" class="form-control" name="newPass" placeholder="Enter Your New Password" required>
                     </div>
                     <div class="form-group">
-                        <lable for="body">Body: </lable>
-                        <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
+                        <label for="rNewPass">Repeat New Password</label>
+                        <input type="text" class="form-control" name="rNewPass" placeholder="Repeat Your New Password" required>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-success"  type="submit">Send</button>
-                    </div>
+                    <button type="submit" class="btn btn-success btn-block"> Update Password</button>
+
                 </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
