@@ -25,7 +25,7 @@ if(isset($_POST['logout'])){
                 <li class="active"><a href="">Dashboard</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Hello </a></li>
+                <li><a href="#">Welcome </a></li>
                 <li>
                     <form method="post" >
                         <button type="submit" class="btn btn-danger" name="logout" method="post">Logout</button>
@@ -44,9 +44,14 @@ if(isset($_POST['logout'])){
             </div>
             <div class="col-md-2">
                 <div class="dropdown create">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="modal" data-target="#composeModal" aria-haspopup="true" aria-expanded="true">
-                        Compose
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Create Content
+                        <span class="caret"></span>
                     </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a type="button" data-toggle="modal" data-target="#addUser">Add User</a></li>
+                        <li><a type="button" data-toggle="modal" data-target="#addTask">Add Task</a></li>
+                    </ul>
 
                 </div>
             </div>
@@ -75,13 +80,14 @@ if(isset($_POST['logout'])){
                     </form>
                 </div>
                 <div class="list-group">
-                    <a href="" class="list-group-item active main-color-bg">
+                    <a href="admin.php?id=dash" class="list-group-item active main-color-bg">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
                     <form role="form" method="get">
                         <a href="admin.php?id=datesheet" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Date Sheet</a>
                         <a href="admin.php?id=timetable" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Time Table </a>
                         <a href="admin.php?id=mailbox" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mail </a>
+                        <a href="admin.php?id=toDoList" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> To Do List </a>
                     </form>
                 </div>
             </div>
@@ -134,31 +140,66 @@ if(isset($_POST['logout'])){
 <!-- Modals -->
 
 <!-- Add User -->
-<div class="modal fade" id="composeModal" role="dialog">
+<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #5e5e5e;text-align: center;color: white !important;font-size: 30px">
-                <h6 style="font-size: 20px">New Message</h6>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Faculty</h4>
             </div>
-            <div class="modal-body" style="padding: 40px 50px">
-                <form role="form" method="post" action="mailsend.php">
+            <div class="modal-body">
+                <form role="form" action="register.php" method="post">
                     <div class="form-group">
-                        <lable for="to">To: </lable>
-                        <input type="text" class="form-control" name="to" required />
+                        <label for="fullName"><span class="glyphicon glyphicon-user"></span> Name</label>
+                        <input type="text" class="form-control" name="fullName" placeholder="Enter Full Name" required>
                     </div>
                     <div class="form-group">
-                        <lable for="subject">Subject: </lable>
-                        <input type="text" class="form-control" name="subject" required />
+                        <label for="username"><span class="glyphicon glyphicon-user"></span> Username</label>
+                        <input type="text" class="form-control" name="username" placeholder="Enter College Id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                        <input type="password" class="form-control" name="psw" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Rpsw"><span class="glyphicon glyphicon-eye-open"></span> Retype Password</label>
+                        <input type="password" class="form-control" name="Rpsw" placeholder="Re-enter password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Task</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" action="addTask.php" method="post">
+                    <div class="form-group">
+                        <label for="taskName">Task Name</label>
+                        <input type="text" class="form-control" name="taskName" placeholder="Enter Task Name" required>
                     </div>
                     <div class="form-group">
                         <lable for="body">Body: </lable>
                         <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-success"  type="submit">Send</button>
-                    </div>
+                    <button type="submit" class="btn btn-success btn-block"> Add Task</button>
+
                 </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>

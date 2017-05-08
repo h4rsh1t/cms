@@ -209,7 +209,7 @@ if(isset($_SESSION['errords'])) {
                             <lable for="body">Body: </lable>
                             <textarea class="form-control" name="body" cols="40" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Add Task</button>
+                        <button type="submit" class="btn btn-success btn-block"> Add Task</button>
 
                     </form>
                     <div class="modal-footer">

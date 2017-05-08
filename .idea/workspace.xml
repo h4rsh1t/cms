@@ -26,127 +26,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="taskList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taskList.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1494224514428" expanded="true" signature="94:155" ph="SELECT * FRO... mail_all" />
-                <marker date="1494224514428" expanded="true" signature="225:286" ph="SELECT * FRO... mail_all" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addTask.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/addTask.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="93" lean-forward="false" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
-              <folding>
-                <marker date="1494224779665" expanded="true" signature="191:254" ph="INSERT INTO to_do_all... " />
-                <marker date="1494224779665" expanded="true" signature="191:279" ph="INSERT INTO to_do_all... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addTask.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/addTask.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="100" lean-forward="false" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
-              <folding>
-                <marker date="1494224915766" expanded="true" signature="47:110" ph="INSERT INTO to_do_all... " />
-                <marker date="1494224915766" expanded="true" signature="47:135" ph="INSERT INTO to_do_all... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="admin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="347">
+              <caret line="221" column="0" lean-forward="true" selection-start-line="157" selection-start-column="4" selection-end-line="221" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dash.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/dash.php">
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="357">
+              <caret line="84" column="155" lean-forward="false" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="155" />
               <folding>
-                <marker date="1493981879945" expanded="true" signature="57:103" ph="SELECT * fro... login" />
-                <marker date="1493981879945" expanded="true" signature="132:178" ph="SELECT * fro... login" />
-                <marker date="1493981879945" expanded="true" signature="719:801" ph="SELECT usern... login_log" />
-                <marker date="1493981879945" expanded="true" signature="847:886" ph="select * fro... user_info" />
+                <marker date="1494167626572" expanded="true" signature="3721:3767" ph="SELECT * FRO... mail_all" />
+                <marker date="1494167626572" expanded="true" signature="4379:4497" ph="INSERT INTO mail_all... " />
+                <marker date="1494167626572" expanded="true" signature="4772:4807" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inbox.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/inbox.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-              <folding>
-                <element signature="e#788#1274#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1494225367210" expanded="true" signature="120:202" ph="SELECT membe... login" />
-                <marker date="1494225367210" expanded="true" signature="327:376" ph="SELECT * fro... user_info" />
-                <marker date="1494225367210" expanded="true" signature="477:528" ph="insert into login_log... " />
-                <marker date="1494225367210" expanded="true" signature="573:629" ph="UPDATE user_... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taskList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/taskList.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-              <folding>
-                <marker date="1494225024547" expanded="true" signature="64:106" ph="SELECT * FRO... to_do_all" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewTask.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="viewTask.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/viewTask.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="125" column="88" lean-forward="false" selection-start-line="125" selection-start-column="88" selection-end-line="125" selection-end-column="88" />
+            <state relative-caret-position="517">
+              <caret line="206" column="0" lean-forward="true" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
               <folding>
-                <marker date="1494225077880" expanded="true" signature="3748:3795" ph="SELECT * FRO... to_do_all" />
-                <marker date="1494225077880" expanded="true" signature="4221:4257" ph="DELETE FROM " />
+                <marker date="1494226365981" expanded="true" signature="4299:4346" ph="SELECT * FRO... to_do_all" />
+                <marker date="1494226365981" expanded="true" signature="4772:4808" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -162,6 +73,8 @@
       <find>chan</find>
       <find>Compose</find>
       <find>Crea</find>
+      <find>HEll</find>
+      <find>dashboard</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,7 +94,6 @@
         <option value="$PROJECT_DIR$/changePass.php" />
         <option value="$PROJECT_DIR$/faculty.php" />
         <option value="$PROJECT_DIR$/student.php" />
-        <option value="$PROJECT_DIR$/admin/admin.php" />
         <option value="$PROJECT_DIR$/view.php" />
         <option value="$PROJECT_DIR$/viewTask.php" />
         <option value="$PROJECT_DIR$/admin/view.php" />
@@ -190,8 +102,9 @@
         <option value="$PROJECT_DIR$/addTask.php" />
         <option value="$PROJECT_DIR$/admin/addTask.php" />
         <option value="$PROJECT_DIR$/admin/taskList.php" />
-        <option value="$PROJECT_DIR$/admin/viewTask.php" />
         <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/admin/admin.php" />
+        <option value="$PROJECT_DIR$/admin/viewTask.php" />
       </list>
     </option>
   </component>
@@ -341,12 +254,12 @@
       <workItem from="1494142959380" duration="6820000" />
       <workItem from="1494160433458" duration="7111000" />
       <workItem from="1494167668175" duration="125000" />
-      <workItem from="1494224424040" duration="1214000" />
+      <workItem from="1494224424040" duration="1966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17524000" />
+    <option name="totallyTimeSpent" value="18276000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -424,7 +337,7 @@
         <state relative-caret-position="68">
           <caret line="4" column="40" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding>
-            <element signature="e#11#172#0#PHP" expanded="true" />
+            <element signature="e#11#172#0#PHP" expanded="false" />
             <marker date="1494161237142" expanded="true" signature="704:723" ph="..." />
           </folding>
         </state>
@@ -479,7 +392,7 @@
         <state relative-caret-position="68">
           <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
           <folding>
-            <element signature="e#11#172#0#PHP" expanded="true" />
+            <element signature="e#11#172#0#PHP" expanded="false" />
             <marker date="1494161237142" expanded="true" signature="704:723" ph="..." />
           </folding>
         </state>
@@ -544,7 +457,7 @@
         <state relative-caret-position="223">
           <caret line="52" column="38" lean-forward="false" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
           <folding>
-            <element signature="e#11#172#0#PHP" expanded="true" />
+            <element signature="e#11#172#0#PHP" expanded="false" />
             <marker date="1494161237142" expanded="true" signature="704:723" ph="..." />
           </folding>
         </state>
@@ -651,18 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="168" column="30" lean-forward="true" selection-start-line="168" selection-start-column="30" selection-end-line="168" selection-end-column="30" />
-          <folding>
-            <marker date="1494167626572" expanded="true" signature="3721:3767" ph="SELECT * FRO... mail_all" />
-            <marker date="1494167626572" expanded="true" signature="4379:4497" ph="INSERT INTO mail_all... " />
-            <marker date="1494167626572" expanded="true" signature="4772:4807" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/download.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -693,23 +594,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/taskList.php">
+    <entry file="file://$PROJECT_DIR$/addTask.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="170">
+          <caret line="10" column="93" lean-forward="false" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
           <folding>
-            <marker date="1494225024547" expanded="true" signature="64:106" ph="SELECT * FRO... to_do_all" />
+            <marker date="1494224779665" expanded="true" signature="191:254" ph="INSERT INTO to_do_all... " />
+            <marker date="1494224779665" expanded="true" signature="191:279" ph="INSERT INTO to_do_all... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/viewTask.php">
+    <entry file="file://$PROJECT_DIR$/admin/addTask.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="125" column="88" lean-forward="false" selection-start-line="125" selection-start-column="88" selection-end-line="125" selection-end-column="88" />
+        <state relative-caret-position="68">
+          <caret line="4" column="100" lean-forward="false" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
           <folding>
-            <marker date="1494225077880" expanded="true" signature="3748:3795" ph="SELECT * FRO... to_do_all" />
-            <marker date="1494225077880" expanded="true" signature="4221:4257" ph="DELETE FROM " />
+            <marker date="1494224915766" expanded="true" signature="47:110" ph="INSERT INTO to_do_all... " />
+            <marker date="1494224915766" expanded="true" signature="47:135" ph="INSERT INTO to_do_all... " />
           </folding>
         </state>
       </provider>
@@ -740,16 +642,8 @@
         <state relative-caret-position="258">
           <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
           <folding>
-            <element signature="e#788#1274#0#PHP" expanded="true" />
+            <element signature="e#788#1274#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,24 +660,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/addTask.php">
+    <entry file="file://$PROJECT_DIR$/admin/taskList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="100" lean-forward="false" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
+        <state relative-caret-position="342">
+          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
-            <marker date="1494224915766" expanded="true" signature="47:110" ph="INSERT INTO to_do_all... " />
-            <marker date="1494224915766" expanded="true" signature="47:135" ph="INSERT INTO to_do_all... " />
+            <marker date="1494225024547" expanded="true" signature="64:106" ph="SELECT * FRO... to_do_all" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addTask.php">
+    <entry file="file://$PROJECT_DIR$/admin/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="93" lean-forward="false" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
+        <state relative-caret-position="357">
+          <caret line="84" column="155" lean-forward="false" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="155" />
           <folding>
-            <marker date="1494224779665" expanded="true" signature="191:254" ph="INSERT INTO to_do_all... " />
-            <marker date="1494224779665" expanded="true" signature="191:279" ph="INSERT INTO to_do_all... " />
+            <marker date="1494167626572" expanded="true" signature="3721:3767" ph="SELECT * FRO... mail_all" />
+            <marker date="1494167626572" expanded="true" signature="4379:4497" ph="INSERT INTO mail_all... " />
+            <marker date="1494167626572" expanded="true" signature="4772:4807" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="221" column="0" lean-forward="true" selection-start-line="157" selection-start-column="4" selection-end-line="221" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/viewTask.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="206" column="0" lean-forward="true" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+          <folding>
+            <marker date="1494226365981" expanded="true" signature="4299:4346" ph="SELECT * FRO... to_do_all" />
+            <marker date="1494226365981" expanded="true" signature="4772:4808" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
